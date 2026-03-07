@@ -28,14 +28,14 @@ public class generalArrival{
                 maxIndex = i;
             }
         }
-        /*
+        
         System.out.println("max");
         System.out.println(maxIndex);
         System.out.println(max);
         System.out.println("min");
         System.out.println(minIndex);
         System.out.println(min);
-         */
+        
 
         //steps
         int maxSteps = maxIndex;
