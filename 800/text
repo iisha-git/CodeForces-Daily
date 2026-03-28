@@ -1,0 +1,49 @@
+#include "DHT.h"
+
+#define PIR_PIN 5
+#define DHTPIN 4
+#define DHTTYPE DHT22
+
+DHT dht(DHTPIN, DHTTYPE);
+
+unsigned long lastMotionTime = 0; 
+
+void setup() {
+  Serial.begin(115200);
+  dht.begin();
+  pinMode(PIR_PIN, INPUT);
+  Serial.println("System Starting...");
+}
+
+void loop() {
+  float humidity = dht.readHumidity();
+  float temperature = dht.readTemperature();
+  int motion = digitalRead(PIR_PIN);
+
+  if (isnan(humidity) || isnan(temperature)) {
+    Serial.print("DHT Error!");
+  } else {
+    Serial.print("Temp: ");
+    Serial.print(temperature);
+    Serial.print(" °C | Humidity: ");
+    Serial.print(humidity);
+  }
+
+  // motion tracking
+  if (motion == HIGH) {
+    lastMotionTime = millis();
+  }
+
+static int stableCount = 0;
+
+if (motion == HIGH) {
+  stableCount++;
+} else {
+  stableCount = 0;
+}
+
+if (stableCount >= 2) {
+  lastMotionTime = millis();
+}
+  delay(2000);
+}
