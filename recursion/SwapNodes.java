@@ -1,28 +1,26 @@
-class ListNode{
-    int val;
-    ListNode next;
+package recursion;
 
-    ListNode(int val){
-        this.val = val;
-    }
+class Node{
+    int data;
+    Node next;
 
-    ListNode(int val,ListNode next){
-        this.val = val;
-        this.next = next;
+    public Node(int data){
+        this.data=data;
+        this.next=null;
     }
 }
 
 public class SwapNodes{
     
-    public ListNode swapPairs(ListNode head){
-        ListNode dummy = new ListNode(-1);
+    public Node swapPairs(Node head){
+        Node dummy = new Node(-1);
         dummy.next = head;
 
-        ListNode prev = dummy;
+        Node prev = dummy;
 
         while (head!=null && head.next!=null) {
-            ListNode f = head;
-            ListNode s = head.next;
+            Node f = head;
+            Node s = head.next;
 
             //swap
             f.next = s.next;
