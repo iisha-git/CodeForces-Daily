@@ -1,6 +1,6 @@
 package DNC;
 
-public class ToDMatrix {
+public class Helper2D {
     public static boolean HelperTwoD(int [][]matrix, int target, int left , int right, int top, int bottom){
         if(left>right){
             return false;
