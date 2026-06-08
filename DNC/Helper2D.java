@@ -18,11 +18,8 @@ public class Helper2D {
             }
 
             r=r+1;
-            
-            return HelperTwoD(matrix, target, left, mid-1, r, bottom) || HelperTwoD(matrix, target, mid+1, right, top, r-1);
-
         }
-        return false;
+        return HelperTwoD(matrix, target, left, mid-1, r, bottom) || HelperTwoD(matrix, target, mid+1, right, top, r-1);
     }
     public static boolean TwoDmatrix(int[][]matrix,int target){
 
